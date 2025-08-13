@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="ru" data-palette="aurora" data-pattern="aurora">
 <head>
@@ -14,15 +13,15 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Комил Султонов — IT Project Manager" />
-  <meta property="og:url" content="https://kayoooma.github.io/personal_site/" />
-  <link rel="canonical" href="https://kayoooma.github.io/personal_site/" />
-  <link rel="alternate" href="https://kayoooma.github.io/personal_site/" hreflang="ru" />
-  <link rel="alternate" href="https://kayoooma.github.io/personal_site/en/" hreflang="en" />
-  <link rel="alternate" href="https://kayoooma.github.io/personal_site/" hreflang="x-default" />
+  <meta property="og:url" content="https://kayoooma.github.io/project_manager/" />
+  <link rel="canonical" href="https://kayoooma.github.io/project_manager/" />
+  <link rel="alternate" href="https://kayoooma.github.io/project_manager/" hreflang="ru" />
+  <link rel="alternate" href="https://kayoooma.github.io/project_manager/en/" hreflang="en" />
+  <link rel="alternate" href="https://kayoooma.github.io/project_manager/" hreflang="x-default" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Комил Султонов — IT Project Manager" />
   <meta name="twitter:description" content="Финтех, AI/ML, продуктовые метрики и автоматизация. Управление кросс‑функциональными командами и релизами." />
-  <meta name="twitter:image" content="https://kayoooma.github.io/personal_site/assets/og-cover.jpg?v=1" />
+  <meta name="twitter:image" content="https://kayoooma.github.io/project_manager/assets/og-cover.jpg?v=1" />
   <!-- Favicon / tab icon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f8fafc'/%3E%3Cstop offset='0.5' stop-color='%23cbd5e1'/%3E%3Cstop offset='1' stop-color='%2394a3b8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='52' height='52' rx='14' fill='%230b0d12'/%3E%3Cpath d='M20 44 L44 20 M44 20 L44 34 M44 20 L30 20' stroke='url(%23g)' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"/>
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f8fafc'/%3E%3Cstop offset='0.5' stop-color='%23cbd5e1'/%3E%3Cstop offset='1' stop-color='%2394a3b8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='52' height='52' rx='14' fill='%230b0d12'/%3E%3Cpath d='M20 44 L44 20 M44 20 L44 34 M44 20 L30 20' stroke='url(%23g)' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"/>
@@ -135,7 +134,11 @@ html[data-palette="glass"] .hero::before{ content:""; position:absolute; inset:0
     .switcher label{font-size:12px; color:var(--muted)} .select{appearance:none; -webkit-appearance:none; padding:8px 12px; border-radius:10px; border:1px solid var(--line); background:color-mix(in oklab, var(--panel) 96%, transparent); color:color-mix(in oklab, var(--text) 90%, transparent)} .switcher .row{display:flex; gap:8px; align-items:center}
     @media (max-width:540px){ .switcher{flex-direction:column; align-items:stretch} }
     @media (max-width:640px){ .switcher{ left:auto; right:calc(max(10px, env(safe-area-inset-right, 0px)) + 6px); bottom:calc(max(12px, env(safe-area-inset-bottom, 0px)) + 6px); width:clamp(200px, 45vw, 280px); padding:10px 12px; gap:10px } .switcher .row{ display:grid; grid-template-columns:max-content 1fr; column-gap:10px; align-items:center } .switcher label{ margin:0 } .switcher .select{ width:100% } }
-  </style>
+    /* Hint bubble “пссс…” */
+  .psst{position:fixed; z-index:90; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 98%, transparent), color-mix(in oklab, var(--panel) 92%, transparent)); border:1px solid var(--line); box-shadow:var(--shadow); border-radius:12px; padding:10px 12px; color:var(--text); display:flex; align-items:center; gap:8px; max-width:min(92vw, 520px)}
+  .psst .x{margin-left:6px; border:0; background:transparent; color:var(--muted); cursor:pointer; font:700 14px/1 Inter}
+  @media (max-width:540px){ .psst{padding:8px 10px; font-size:13px} }
+</style>
 </head>
 <body>
   <div class="layer mesh" aria-hidden="true"></div>
@@ -152,7 +155,7 @@ html[data-palette="glass"] .hero::before{ content:""; position:absolute; inset:0
       <a href="#top" class="logo" aria-label="На главную">
         <svg width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="12" fill="#0c1116" stroke="var(--line)"/><path d="M16 30l8-12 8 12" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <strong>Комил Султонов</strong>
-        <span class="badge">IT Project Manager</span>
+        <span class="badge">Project Manager</span>
       </a>
       <button class="menu-toggle" aria-label="Меню" aria-expanded="false" onclick="toggleMenu(this)">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -233,7 +236,6 @@ html[data-palette="glass"] .hero::before{ content:""; position:absolute; inset:0
         <div class="card reveal"><div class="card-title">Управление проектами</div><p class="muted">Agile, Scrum, Kanban, Waterfall, SLA, User Flow, планирование бюджета, Jira/Confluence, Asana.</p></div>
         <div class="card reveal"><div class="card-title">Технологии</div><p class="muted">Python, Java, JavaScript, GitHub, Telegram‑боты, интеграции API, SQLite/PostgreSQL, AI/ML (автоматизация контента и процессов).</p></div>
         <div class="card reveal"><div class="card-title">Маркетинг/продакшен</div><p class="muted">SMM, контекст, таргетинг, 3D/Motion (Blender), креативы под перфоманс.</p></div>
-      </div>
       <div class="card reveal" style="margin-top:18px"><div class="card-title">Языки</div><p class="muted">Русский — родной · Узбекский — C1 · Английский — B2 (IELTS 6.5)</p></div>
     </div>
   </section>
@@ -294,7 +296,7 @@ html[data-palette="glass"] .hero::before{ content:""; position:absolute; inset:0
   <section id="lab" class="section">
     <div class="container">
       <h2 class="h2">Lab: быстрые утилиты PM</h2>
-      <p class="p">Небольшие инструменты, которые ускоряют планирование и «подсветку» эффекта гипотез.</p>
+      <p class="p">Мои рабочие мини‑инструменты: помогают быстро прикинуть метрики, расставить приоритеты и оценить эффект гипотез.</p>
       <div class="card reveal" style="margin-top:18px">
         <div class="card-title">1) Метрики продукта: Stickiness и LTV</div>
         <div class="row">
@@ -310,7 +312,6 @@ html[data-palette="glass"] .hero::before{ content:""; position:absolute; inset:0
           <div class="stat"><span class="label">LTV, ₽</span><span id="mLtv" class="v">—</span></div>
           <div class="stat"><span class="label">LTV/CAC</span><span id="mRatio" class="v">—</span></div>
         </div>
-      </div>
       </div>
       <div class="card reveal" style="margin-top:18px">
         <div class="card-title">2) ICE‑приоритизация гипотез</div>
@@ -353,7 +354,7 @@ html[data-palette="glass"] .hero::before{ content:""; position:absolute; inset:0
         <div id="cv" class="card reveal">
           <div class="card-title">Резюме (PDF)</div>
           <p class="p">Скачать полную версию резюме.</p>
-          <a class="cta magnet" id="resumeLink" href="./assets/Султонов Комил Гайратович (5).pdf" type="application/pdf" download onmousemove="btnHover(event)" onmouseleave="btnLeave(event)"><span class="dot"></span><span>Скачать PDF</span></a>
+          <a class="cta magnet" id="resumeLink" href="./assets/Султонов К.Г. Руководитель проектов.pdf" type="application/pdf" download onmousemove="btnHover(event)" onmouseleave="btnLeave(event)"><span class="dot"></span><span>Скачать PDF</span></a>
         </div>
       </div>
     </div>
@@ -393,6 +394,12 @@ html[data-palette="glass"] .hero::before{ content:""; position:absolute; inset:0
     </div>
   </div>
 
+  <!-- Подсказка про кастомные темы -->
+  <div id="psstHint" class="psst" role="note">
+    <span>👀 Псс… у сайта — кастомный дизайн. Поиграй с темами ниже ✨👇</span>
+    <button aria-label="Скрыть подсказку" class="x">×</button>
+  </div>
+
   <script>
     function toggleMenu(btn){ const m=document.getElementById('menu'); const open=m.classList.toggle('open'); document.body.classList.toggle('menu-open', open); btn.setAttribute('aria-expanded', open); }
     function closeMenu(){ document.getElementById('menu').classList.remove('open'); document.body.classList.remove('menu-open'); }
@@ -409,6 +416,12 @@ html[data-palette="glass"] .hero::before{ content:""; position:absolute; inset:0
     paletteSelect.addEventListener('change', e=> setPalette(e.target.value)); patternSelect.addEventListener('change', e=> setPattern(e.target.value));
     function reserveSpaceForSwitcher(){ const sw=document.querySelector('.switcher'); if(!sw) return; const h=sw.offsetHeight+24; document.body.style.paddingBottom=(innerWidth<=640? h+'px' : ''); }
     reserveSpaceForSwitcher(); addEventListener('resize', reserveSpaceForSwitcher);
+    // позиционируем подсказку над плашкой выбора темы/фона
+    (function(){ const hint=document.getElementById('psstHint'); const sw=document.querySelector('.switcher'); if(!hint||!sw) return; if(localStorage.getItem('psst-hide')==='1'){ hint.style.display='none'; return }
+      function place(){ const r=sw.getBoundingClientRect(); const w=hint.offsetWidth; const h=hint.offsetHeight; const x=Math.max(8, Math.min(innerWidth-w-8, r.left + r.width/2 - w/2)); const y=Math.max(8, r.top - h - 10 + scrollY); hint.style.left=x+'px'; hint.style.top=y+'px'; }
+      place(); addEventListener('resize', place); addEventListener('scroll', place, {passive:true});
+      hint.querySelector('.x').addEventListener('click', ()=>{ hint.remove(); localStorage.setItem('psst-hide','1'); });
+    })();
     (function(){ const c=document.getElementById('stars'); if(!c) return; const ctx=c.getContext('2d'); let dpr=Math.min(devicePixelRatio||1,2);
       function resize(){ const w=innerWidth, h=innerHeight; c.width=w*dpr; c.height=h*dpr; c.style.width=w+'px'; c.style.height=h+'px'; ctx.setTransform(dpr,0,0,dpr,0,0);} resize(); addEventListener('resize', resize);
       const N=120; const S=Array.from({length:N},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*1.1+0.2,a:Math.random()*0.5+0.25,vx:(Math.random()-.5)*.42,vy:(Math.random()-.5)*.42}));
@@ -434,7 +447,7 @@ function renderRetention(){ const start=+rStart.value||0; const ret=(+rRet.value
 [rStart,rRet,rMonths].forEach(elm=> elm.addEventListener('input', renderRetention)); renderRetention();
     const gridLayer=document.querySelector('.gridfx'); let gridVisible=true; function cycleSelect(sel){ const i=sel.selectedIndex; sel.selectedIndex=(i+1)%sel.options.length; sel.dispatchEvent(new Event('change',{bubbles:true})); }
     document.addEventListener('keydown',(e)=>{ if(e.target.matches('input,textarea')) return; const k=e.key.toLowerCase(); if(k==='p'){ cycleSelect(paletteSelect);} else if(k==='f'){ cycleSelect(patternSelect);} else if(k==='g'){ gridVisible=!gridVisible; if(gridLayer) gridLayer.style.display=gridVisible?'block':'none'; } });
-    (async function ensureResume(){ const a=document.getElementById('resumeLink'); if(!a) return; const primary='./assets/Султонов Комил Гайратович (5).pdf'; const fallback='./assets/resume.pdf'; try{ const r=await fetch(encodeURI(primary),{method:'HEAD'}); if(r&&r.ok){ a.href=encodeURI(primary); return } const r2=await fetch(fallback,{method:'HEAD'}); if(r2&&r2.ok){ a.href=fallback } }catch(err){ a.href=fallback } })();
+    (async function ensureResume(){ const a=document.getElementById('resumeLink'); if(!a) return; const primary='./assets/Султонов К.Г. Руководитель проектов.pdf'; const fallback='./assets/resume.pdf'; try{ const r=await fetch(encodeURI(primary),{method:'HEAD'}); if(r&&r.ok){ a.href=encodeURI(primary); return } const r2=await fetch(fallback,{method:'HEAD'}); if(r2&&r2.ok){ a.href=fallback } }catch(err){ a.href=fallback } })();
   </script>
 </body>
 </html>
