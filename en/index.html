@@ -23,7 +23,7 @@
   <meta name="twitter:title" content="Komil Sultonov — IT Project Manager" />
   <meta name="twitter:description" content="Fintech, AI/ML, product metrics and automation. Leading cross‑functional teams and releases." />
   <!-- Updated twitter:image to og-cover-project-manager.jpg -->
-  <meta name="twitter:image" content="../assets/og-cover-project-manager.jpg" />
+  <meta property="twitter:image" content="../assets/og-cover-project-manager.jpg" />
   <!-- Favicon / tab icon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f8fafc'/%3E%3Cstop offset='0.5' stop-color='%23cbd5e1'/%3E%3Cstop offset='1' stop-color='%2394a3b8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='52' height='52' rx='14' fill='%230b0d12'/%3E%3Cpath d='M20 44 L44 20 M44 20 L44 34 M44 20 L30 20' stroke='url(%23g)' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"/>
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f8fafc'/%3E%3Cstop offset='0.5' stop-color='%23cbd5e1'/%3E%3Cstop offset='1' stop-color='%2394a3b8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='52' height='52' rx='14' fill='%230b0d12'/%3E%3Cpath d='M20 44 L44 20 M44 20 L44 34 M44 20 L30 20' stroke='url(%23g)' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"/>
@@ -258,66 +258,66 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      opacity: 0.15; /* Increased default opacity */
+      opacity: 0.25; /* Increased default opacity significantly */
       z-index: -1;
-      filter: grayscale(80%) brightness(0.8); /* Less grayscale, brighter by default */
+      filter: grayscale(70%) brightness(0.95); /* Less grayscale, brighter by default */
       transition: opacity 0.3s ease, filter 0.3s ease;
     }
     .card:hover::before {
-      opacity: 0.22; /* More visible on hover */
-      filter: grayscale(60%) brightness(0.9); /* Even less grayscale, brighter on hover */
+      opacity: 0.35; /* More visible on hover */
+      filter: grayscale(50%) brightness(1.1); /* Even less grayscale, brighter on hover */
     }
 
-    /* Specific card background images */
+    /* Specific card background images adjustments */
     .card.bg-waves::before {
       background-image: url('../assets/abstract-waves.jpg');
-      opacity: 0.12; /* Adjusted */
-      filter: grayscale(90%) brightness(0.7) invert(5%); /* Adjusted */
+      opacity: 0.2; /* Adjusted */
+      filter: grayscale(80%) brightness(0.8) invert(5%); /* Adjusted */
     }
     .card.bg-waves:hover::before {
-      opacity: 0.18; /* Adjusted */
-      filter: grayscale(70%) brightness(0.8) invert(2%); /* Adjusted */
+      opacity: 0.3; /* Adjusted */
+      filter: grayscale(60%) brightness(0.9) invert(2%); /* Adjusted */
     }
 
     /* bg-automation is now primarily for the img tag, but keeping this style in case it's useful for other cards */
     .card.bg-automation::before {
       background-image: url('../assets/automation-typing.gif');
-      opacity: 0.18; /* Adjusted */
-      filter: brightness(0.8) blur(0.8px); /* Adjusted */
+      opacity: 0.28; /* Adjusted */
+      filter: brightness(0.9) blur(0.6px); /* Adjusted */
     }
     .card.bg-automation:hover::before {
-      opacity: 0.25; /* Adjusted */
-      filter: brightness(0.9) blur(0.4px); /* Adjusted */
+      opacity: 0.35; /* Adjusted */
+      filter: brightness(1) blur(0.3px); /* Adjusted */
     }
 
     .card.bg-topographic-white::before {
       background-image: url('../assets/topographic-white.jpg');
-      opacity: 0.1; /* Adjusted */
-      filter: grayscale(80%) brightness(0.9) contrast(1.2); /* Adjusted */
+      opacity: 0.2; /* Adjusted */
+      filter: grayscale(70%) brightness(1) contrast(1.3); /* Adjusted */
     }
     .card.bg-topographic-white:hover::before {
-      opacity: 0.15; /* Adjusted */
-      filter: grayscale(60%) brightness(1) contrast(1.3); /* Adjusted */
+      opacity: 0.28; /* Adjusted */
+      filter: grayscale(50%) brightness(1.1) contrast(1.4); /* Adjusted */
     }
 
     .card.bg-street-light::before {
       background-image: url('../assets/street-light-rain.jpg');
-      opacity: 0.22; /* More visible */
-      filter: brightness(0.6) blur(0.6px); /* Darker and slightly blurred */
+      opacity: 0.35; /* More visible */
+      filter: brightness(0.7) blur(0.5px); /* Darker and slightly blurred */
     }
     .card.bg-street-light:hover::before {
-      opacity: 0.28;
-      filter: brightness(0.7) blur(0.3px);
+      opacity: 0.45;
+      filter: brightness(0.8) blur(0.2px);
     }
 
     .card.bg-liquid-purple::before {
       background-image: url('../assets/liquid-purple.jpg');
-      opacity: 0.28; /* More vibrant */
-      filter: saturate(2) brightness(0.7) blur(0.4px);
+      opacity: 0.38; /* More vibrant */
+      filter: saturate(2.2) brightness(0.8) blur(0.3px);
     }
     .card.bg-liquid-purple:hover::before {
-      opacity: 0.35;
-      filter: saturate(2.2) brightness(0.8) blur(0.1px);
+      opacity: 0.48;
+      filter: saturate(2.5) brightness(0.9) blur(0.1px);
     }
 
 
@@ -476,7 +476,7 @@
         <article class="card reveal"><div class="card-title">Planning & control</div><ul class="muted"><li>Backlog, roadmap, release plans</li><li>Timelines, risks, priorities</li><li>Stakeholder communications</li></ul></article>
         <article class="card reveal"><div class="card-title">Integrations & architecture</div><ul class="muted"><li>Payments: YooKassa, Payme</li><li>FX rates & currency APIs</li><li>Docs & diagrams</li></ul></article>
         <article class="card reveal bg-topographic-white"><div class="card-title">Product metrics</div><ul class="muted"><li>DAU/MAU, retention, churn</li><li>CR, ARPU, LTV, ROAS</li><li>Hypotheses & experiments</li></ul></article>
-        <article class="card reveal bg-automation"><div class="card-title">Processes & AI</div><ul class="muted"><li>AI automation, Python</li><li>Small internal tools</li><li>CI for simple tools</li></ul></article>
+        <article class="card reveal bg-liquid-purple"><div class="card-title">Processes & AI</div><ul class="muted"><li>AI automation, Python</li><li>Small internal tools</li><li>CI for simple tools</li></ul></article>
       </div>
     </div>
   </section>
@@ -486,7 +486,7 @@
       <h2 class="h2">Case: WatchWithNoHands (fintech + AI)</h2>
       <p class="p">Subscription system, payments, referral program, and a Telegram bot as interface. From requirements and architecture to releases and operations. Built‑in metrics and reporting.</p>
       <div class="grid cols-2" style="margin-top:18px">
-        <div class="card reveal bg-liquid-purple"><div class="card-title">My role</div><ul class="muted"><li>Requirements & task decomposition</li><li>Release plan & risk management</li><li>Sync development, QA and marketing</li></ul></div>
+        <div class="card reveal bg-street-light"><div class="card-title">My role</div><ul class="muted"><li>Requirements & task decomposition</li><li>Release plan & risk management</li><li>Sync development, QA and marketing</li></ul></div>
         <div class="card reveal bg-topographic-blue"><div class="card-title">Tech / stack</div><div class="mono small">Python (aiogram 3.x, APScheduler), VS Code, Java, JavaScript, GitHub, Asana, YooKassa/Payme, aiosqlite, FX APIs, local AI models (DeepSeek R1, SD, Whisper/Vosk)</div></div>
       </div>
     </div>
@@ -497,7 +497,7 @@
       <h2 class="h2">Skills</h2>
       <div class="grid cols-3" style="margin-top:8px">
         <div class="card reveal"><div class="card-title">Project management</div><p class="muted">Agile, Scrum, Kanban, Waterfall, SLA, User Flow, budgeting, Jira/Confluence, Asana.</p></div>
-        <div class="card reveal bg-automation"><div class="card-title">Technology</div><p class="muted">Python, Java, JavaScript, GitHub, Telegram bots, API integrations, SQLite/PostgreSQL, AI/ML (process & content automation).</p></div>
+        <div class="card reveal bg-liquid-purple"><div class="card-title">Technology</div><p class="muted">Python, Java, JavaScript, GitHub, Telegram bots, API integrations, SQLite/PostgreSQL, AI/ML (process & content automation).</p></div>
         <div class="card reveal"><div class="card-title">Marketing / production</div><p class="muted">SMM, paid ads, 3D/Motion (Blender), performance creatives.</p></div>
         <div class="card reveal bg-street-light" style="margin-top:18px"><div class="card-title">Languages</div><p class="muted">Russian — native · Uzbek — C1 · English — B2 (IELTS 6.5)</p></div>
       </div>
@@ -565,7 +565,7 @@
       <img class="story-image reveal" style="max-width: 500px; margin-left: auto; margin-right: auto; display: block;" src="../assets/automation-typing.gif" alt="Typing code on a laptop, representing automation" loading="lazy">
 
       <div class="grid cols-2" style="margin-top:18px">
-        <div class="card reveal">
+        <div class="card reveal bg-automation">
           <div class="card-title">1) Product metrics: Stickiness & LTV</div>
           <div class="row">
             <label class="field"><span class="label">DAU</span><input id="mDau" class="number" type="number" min="0" step="100" value="12000"></label>
