@@ -121,6 +121,40 @@
     html[data-pattern="glass"] .glass-orbs, html[data-pattern="glass"] .gridfx, html[data-pattern="glass"] .grain{display:block}
     html[data-pattern="stripes"] .graphite-stripes, html[data-pattern="stripes"] .grain{display:block}
     html[data-pattern="plain"] .grain{display:block}
+    /* New patterns based on uploaded images */
+    html[data-pattern="topographic-blue"] .topographic-blue, html[data-pattern="topographic-blue"] .grain{display:block;}
+    html[data-pattern="topographic-white"] .topographic-white, html[data-pattern="topographic-white"] .grain{display:block;}
+    html[data-pattern="street-light"] .street-light, html[data-pattern="street-light"] .grain{display:block;}
+    html[data-pattern="liquid-purple"] .liquid-purple, html[data-pattern="liquid-purple"] .grain{display:block;}
+
+    /* Added class for video background */
+    .video-background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        overflow: hidden; /* Ensure video doesn't overflow its container */
+        background-size: cover; /* Fallback for browsers that don't support video */
+    }
+    .video-background video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        transform: translate(-50%, -50%); /* Center the video */
+        object-fit: cover; /* Cover the container */
+        /* Optional: Add a subtle blur or opacity for cinematic effect */
+        filter: brightness(0.7) contrast(1.1); /* Slightly darken and increase contrast */
+    }
+
 
     .mesh{z-index:-5; filter:blur(50px) saturate(120%); opacity:.35; background:
       radial-gradient(60% 70% at 10% 20%, color-mix(in oklab, var(--accent) 80%, transparent), transparent 60%),
@@ -136,12 +170,82 @@
     .neon-laser{z-index:-4; background:linear-gradient(120deg, transparent 45%, color-mix(in oklab, var(--accent-2) 18%, transparent) 50%, transparent 55%), linear-gradient(-120deg, transparent 45%, color-mix(in oklab, var(--accent) 18%, transparent) 50%, transparent 55%); animation: laserSweep 9s linear infinite}
     @keyframes laserSweep{0%{background-position:-200% 0, 200% 0}100%{background-position:200% 0, -200% 0}}
 
-    .glass-orbs{z-index:-5; filter:blur(60px) saturate(120%); opacity:.42}
+    .glass-orbs{z-index:-5; filter:blur(60px) saturate(120%); opacity:.42; animation:orbMove 30s ease-in-out infinite alternate;}
     .glass-orbs::before, .glass-orbs::after{content:""; position:absolute; width:720px; height:720px; border-radius:50%; filter:blur(40px);} 
-    .glass-orbs::before{left:-120px; top:-160px; background:radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 90%, transparent), transparent 60%)}
-    .glass-orbs::after{right:-160px; bottom:-160px; background:radial-gradient(circle at 70% 70%, color-mix(in oklab, var(--accent-2) 90%, transparent), transparent 60%)}
+    .glass-orbs::before{left:-120px; top:-160px; background:radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 90%, transparent), transparent 60%); animation:orb1Anim 28s ease-in-out infinite alternate;}
+    .glass-orbs::after{right:-160px; bottom:-160px; background:radial-gradient(circle at 70% 70%, color-mix(in oklab, var(--accent-2) 90%, transparent), transparent 60%); animation:orb2Anim 24s ease-in-out infinite alternate;}
+
+    @keyframes orbMove {
+      0% { transform: scale(1) translateX(0) translateY(0); }
+      50% { transform: scale(1.05) translateX(10px) translateY(10px); }
+      100% { transform: scale(1) translateX(0) translateY(0); }
+    }
+    @keyframes orb1Anim {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(20px, 30px); }
+    }
+    @keyframes orb2Anim {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-30px, -20px); }
+    }
 
     .graphite-stripes{z-index:-5; opacity:.18; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 10px)}
+    
+    /* New topographic-blue pattern */
+    .topographic-blue{
+      z-index:-5;
+      opacity:.35; /* Slightly more visible than graphite stripes */
+      background-image: url('../assets/topographic-blue.jpg'); /* Updated path */
+      background-size: cover; /* Cover the entire area */
+      background-position: center;
+      filter: blur(2px); /* Subtle blur for cinematic feel */
+      animation: topographicPan 40s linear infinite alternate; /* Slow, gentle movement */
+    }
+    /* New topographic-white pattern */
+    .topographic-white{
+      z-index:-5;
+      opacity:.35;
+      background-image: url('../assets/topographic-white.jpg'); /* Updated path */
+      background-size: cover;
+      background-position: center;
+      filter: blur(2px) grayscale(50%); /* Subtle blur and grayscale */
+      animation: topographicPan 40s linear infinite alternate;
+    }
+    /* New street-light pattern */
+    .street-light{
+      z-index:-5;
+      opacity:.45; /* More visible for atmospheric effect */
+      background-image: url('../assets/street-light-rain.jpg'); /* Updated path */
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.8) saturate(1.1); /* Enhance mood */
+      animation: panZoom 60s linear infinite alternate; /* Slow pan and zoom */
+    }
+    /* New liquid-purple pattern */
+    .liquid-purple{
+      z-index:-5;
+      opacity:.6; /* More visible for vibrant effect */
+      background-image: url('../assets/liquid-purple.jpg'); /* Updated path */
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.5); /* Make colors pop */
+      animation: liquidFlow 50s ease-in-out infinite alternate; /* Smooth, flowing movement */
+    }
+
+    @keyframes topographicPan {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 100% 100%; }
+    }
+    @keyframes panZoom {
+      0% { background-size: 100%; background-position: 0% 0%; }
+      50% { background-size: 110%; background-position: 10% 10%; }
+      100% { background-size: 100%; background-position: 0% 0%; }
+    }
+    @keyframes liquidFlow {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 50% 100%; }
+    }
+
 
     .gridfx{z-index:-2; opacity:.06; mix-blend-mode:overlay; background-image:linear-gradient(transparent 95%, rgba(255,255,255,.25) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,.25) 95%); background-size:24px 24px,24px 24px; animation:gridShift 60s linear infinite}
     @keyframes gridShift{0%{background-position:0 0,0 0}100%{background-position:480px 0,0 480px}}
@@ -205,6 +309,21 @@
     .bar{height:10px; border-radius:999px; border:1px solid var(--line); background:color-mix(in oklab, var(--panel) 90%, transparent); overflow:hidden}
     .bar i{display:block; height:100%; width:0%; background:linear-gradient(90deg, var(--accent), var(--accent-2)); transition:width 900ms ease}
     .story-cta{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:14px}
+    /* Style for story section images */
+    .story-image {
+      margin-top: 18px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      filter: saturate(1.2); /* Make images a bit more vibrant */
+      opacity: 0.9;
+    }
+    .story-image.reveal {
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+
     @media (max-width:900px){ .story .wrap{grid-template-columns:1fr} }
 
     .field{display:grid; gap:6px; margin:10px 0}
@@ -250,12 +369,25 @@
   </style>
 </head>
 <body>
+  <!-- Conceptual Video Background (uncomment and replace src with your video URL) -->
+  <!-- <div class="video-background">
+    <video autoplay loop muted playsinline>
+      <source src="your-subtle-background-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div> -->
+
   <div class="layer mesh" aria-hidden="true"></div>
   <canvas id="stars" class="layer" aria-hidden="true"></canvas>
   <div class="layer neon-grid" aria-hidden="true"></div>
   <div class="layer neon-laser" aria-hidden="true"></div>
   <div class="layer glass-orbs" aria-hidden="true"></div>
   <div class="layer graphite-stripes" aria-hidden="true"></div>
+  <!-- New pattern layers based on uploaded images -->
+  <div class="layer topographic-blue" aria-hidden="true"></div>
+  <div class="layer topographic-white" aria-hidden="true"></div>
+  <div class="layer street-light" aria-hidden="true"></div>
+  <div class="layer liquid-purple" aria-hidden="true"></div>
   <div class="layer gridfx" aria-hidden="true"></div>
   <div class="layer grain" aria-hidden="true"></div>
 
@@ -327,7 +459,7 @@
         <article class="card reveal"><div class="card-title">Planning & control</div><ul class="muted"><li>Backlog, roadmap, release plans</li><li>Timelines, risks, priorities</li><li>Stakeholder communications</li></ul></article>
         <article class="card reveal"><div class="card-title">Integrations & architecture</div><ul class="muted"><li>Payments: YooKassa, Payme</li><li>FX rates & currency APIs</li><li>Docs & diagrams</li></ul></article>
         <article class="card reveal"><div class="card-title">Product metrics</div><ul class="muted"><li>DAU/MAU, retention, churn</li><li>CR, ARPU, LTV, ROAS</li><li>Hypotheses & experiments</li></ul></article>
-        <article class="card reveal"><div class="card-title">Processes & AI</div><ul class="muted"><li>Agile/Scrum, Kanban</li><li>AI automation, Python</li><li>Small internal tools</li></ul></article>
+        <article class="card reveal"><div class="card-title">Processes & AI</div><ul class="muted"><li>AI automation, Python</li><li>Small internal tools</li><li>CI for simple tools</li></ul></article>
       </div>
     </div>
   </section>
@@ -385,6 +517,8 @@
         <div class="card reveal timeline">
           <div id="storyProgress" aria-hidden="true"></div>
           <div class="milestone"><div class="when">Chapter 1 — First 5 years — Foundation</div><div class="what">From chaos to a system</div><div class="desc">Work on attention and discipline. Building my management lens: how to set goals, decompose tasks and validate hypotheses. Studying business models and processes — to understand growth mechanics and releases.</div><div class="chips"><span class="chip">daily practice</span><span class="chip">principles/frameworks</span><span class="chip">systems thinking</span></div></div>
+          <!-- Image added for visual storytelling in Story section -->
+          <img class="story-image reveal" src="../assets/abstract-waves.jpg" alt="Abstract waves representing chaos to system transition" loading="lazy">
           <div class="milestone"><div class="when">Forks</div><div class="what">Lost the path — came back stronger</div><div class="desc">More than once I had to pause and rethink the course. Each time — back to basics and a refreshed plan of action.</div><div class="chips"><span class="chip">reframing</span><span class="chip">antifragility</span><span class="chip">focus</span></div></div>
           <div class="milestone"><div class="when">Chapter 2 — Next 5 years — Practice</div><div class="what">Applying knowledge to the real world</div><div class="desc">IT projects and products: release management, decomposition and planning. Payment integrations (YooKassa/Payme), CIS currencies, architecture, Telegram bot as interface. Product metrics and reporting, sync of team and vendors.</div><div class="chips"><span class="chip">releases 0→1</span><span class="chip">payment integrations</span><span class="chip">AI automation</span></div></div>
           <div class="milestone"><div class="when">Today</div><div class="what">Clear vision, calm speed</div><div class="desc">I connect strategy, processes and code — from idea to a sustainable system and metrics.</div></div>
@@ -412,6 +546,8 @@
     <div class="container">
       <h2 class="h2">Lab: quick PM utilities</h2>
       <p class="p">My daily mini‑tools: to estimate metrics fast, set priorities and evaluate hypothesis impact.</p>
+      <!-- GIF added for visual storytelling in Lab section -->
+      <img class="story-image reveal" style="max-width: 500px; margin-left: auto; margin-right: auto; display: block;" src="../assets/automation-typing.gif" alt="Typing code on a laptop, representing automation" loading="lazy">
       <div class="card reveal" style="margin-top:18px">
         <div class="card-title">1) Product metrics: Stickiness & LTV</div>
         <div class="row">
@@ -507,6 +643,10 @@
         <option value="neon">Neon grid</option>
         <option value="glass">Glass orbs</option>
         <option value="stripes">Graphite stripes</option>
+        <option value="topographic-blue">Topographic Blue</option>
+        <option value="topographic-white">Topographic White</option> <!-- New pattern option -->
+        <option value="street-light">Street Light</option> <!-- New pattern option -->
+        <option value="liquid-purple">Liquid Purple</option> <!-- New pattern option -->
         <option value="plain">Plain</option>
       </select>
     </div>
@@ -616,7 +756,7 @@
     [rStart,rRet,rMonths].forEach(elm=> elm.addEventListener('input', renderRetention)); renderRetention();
 
     // ROI Calculator functions added from personal_site
-    const ROI={ budget:document.getElementById('roiBudget'), cpl:document.getElementById('roiCpl'), cr:document.getElementById('roiCr'), aov:document.getElementById('roiAov'), margin:document.getElementById('roiMargin'), out:{ leads:document.getElementById('roiLeads'), sales:document.getElementById('roiSales'), rev:document.getElementById('roiRev'), profit:document.getElementById('roiProfit'), roi:document.getElementById('roiRoi') } };
+    const ROI={ budget:document.getElementById('roiBudget'), cpl:document.getElementById('roiCpl'), cr:document.getElementById('roiCr'), aov:document.getElementById('roiAov'), margin:document.getElementById('roiMargin'), out:{ leads:document.getElementById('roiLeads'), sales:document.getElementById('roiSales'), rev:document.getElementById('roiRev'), profit:document.getElementById('roiProfit'), roi:el('roiRoi') } };
     function recalcROI(){ const budget=+ROI.budget.value||0; const cpl=Math.max(+ROI.cpl.value||0,1); const cr=Math.max(+ROI.cr.value||0,0)/100; const aov=+ROI.aov.value||0; const margin=Math.max(+ROI.margin.value||0,0)/100; const leads=budget/cpl; const sales=leads*cr; const revenue=sales*aov; const profit=revenue*margin-budget; const roi=budget>0? (profit/budget*100):0; ROI.out.leads.textContent=fmt(leads); ROI.out.sales.textContent=fmt(sales); ROI.out.rev.textContent=fmt(revenue); ROI.out.profit.textContent=fmt(profit); ROI.out.roi.textContent=(isFinite(roi)? roi.toFixed(1):'—')+'%'; }
     ;['input','change'].forEach(ev=>['roiBudget','roiCpl','roiCr','roiAov','roiMargin'].forEach(id=>document.getElementById(id).addEventListener(ev,recalcROI))); recalcROI();
 
