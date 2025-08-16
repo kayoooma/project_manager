@@ -13,20 +13,20 @@
   <meta property="og:image" content="./assets/og-cover-project-manager.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Комил Султонов — IT Project Manager" />
+  <meta property="og:image:alt" content="Коми Султонов — IT Project Manager" />
   <meta property="og:url" content="https://kayoooma.github.io/project_manager/" />
   <link rel="canonical" href="https://kayoooma.github.io/project_manager/" />
   <link rel="alternate" href="https://kayoooma.github.io/project_manager/" hreflang="ru" />
   <link rel="alternate" href="https://kayoooma.github.io/project_manager/en/" hreflang="en" />
   <link rel="alternate" href="https://kayoooma.github.io/project_manager/" hreflang="x-default" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Комил Султонов — IT Project Manager" />
+  <meta name="twitter:title" content="Коми Султонов — IT Project Manager" />
   <meta name="twitter:description" content="Финтех, AI/ML, продуктовые метрики и автоматизация. Управление кросс‑функциональными командами и релизами." />
   <!-- Updated twitter:image to og-cover-project-manager.jpg -->
   <meta name="twitter:image" content="./assets/og-cover-project-manager.jpg" />
   <!-- Favicon / tab icon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f8fafc'/%3E%3Cstop offset='0.5' stop-color='%23cbd5e1'/%3E%3Cstop offset='1' stop-color='%2394a3b8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='52' height='52' rx='14' fill='%230b0d12'/%3E%3Cpath d='M20 44 L44 20 M44 20 L44 34 M44 20 L30 20' stroke='url(%23g)' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"/>
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f8fafc'/%3E%3Cstop offset='0.5' stop-color='%23cbd5e1'/%3E%3Cstop offset='1' stop-color='%2394a3b8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='52' height='52' rx='14' fill='%230b0d12'/%3E%3Cpath d='M20 44 L44 20 M44 20 L44 34 M44 20 L30 20' stroke='url(%23g)' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"/>
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%23f8fafc'/%3E%3Cstop offset='0.5' stop-color='%23cbd5e1'/%3E%3Cstop offset='1' stop-color='%2394a3b8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='6' y='6' width='52' height='52' rx='14' fill='%230b0d12'/%3E%3Cpath d='M20 44 L44 20 M44 20 L44 34 M44 20 L30 20' stroke='url(%23g)' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -46,8 +46,64 @@
 
     /* Улучшаем читаемость в Black + Glass */
     html[data-palette="glass"] .subtitle, html[data-palette="glass"] .p, html[data-palette="glass"] .label{ color:#eaf2ff; opacity:.98 }
-    html[data-palette="glass"] .menu{ background:rgba(7,9,12,.94) !important; border-color:rgba(255,255,255,.08); box-shadow:0 20px 50px rgba(0,0,0,.55), inset 0 1px rgba(255,255,255,.04) }
     html[data-palette="glass"] .hero::before{ content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(1000px 320px at 40% -10%, rgba(0,0,0,.38), transparent 60%), linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,0) 30%); z-index:0 }
+
+    /* Fix for black + glass hamburger menu button */
+    html[data-palette="glass"] .menu-toggle {
+      border-radius: 999px; /* Make it perfectly round */
+    }
+
+    /* Fix for black + glass menu toggle and lang switch background */
+    html[data-palette="glass"] .menu-toggle,
+    html[data-palette="glass"] .lang-switch a,
+    html[data-palette="glass"] .lang-mobile a {
+      background: transparent; /* Changed to transparent for glass effect */
+      border: none; /* Убираем границу для переключателя языка */
+    }
+
+    /* Fix for the SVG logo background in glass theme */
+    html[data-palette="glass"] .logo svg rect {
+      fill: var(--panel); /* Use panel background for the SVG rect */
+    }
+
+    /* New: Glass effect for the menu dropdown in glass palette */
+    html[data-palette="glass"] .menu{
+      background: transparent; /* Теперь фон полностью прозрачен */
+      backdrop-filter: saturate(120%) blur(8px); /* Применяем эффект размытия */
+      border: none; /* Убираем границу для меню */
+      /* box-shadow:0 20px 50px rgba(0,0,0,.55), inset 0 1px rgba(255,255,255,.04); */ /* Удалена тень, которая могла выглядеть как линия */
+    }
+    /* Убираем нижнюю границу у .nav для темы "glass" */
+    html[data-palette="glass"] .nav {
+      border-bottom: none;
+    }
+    /* Убираем нижнюю границу у .hero для темы "glass" */
+    html[data-palette="glass"] .hero {
+      border-bottom: none;
+    }
+
+
+    /* Стиль для полосы прокрутки для Webkit-браузеров (Chrome, Safari) */
+    ::-webkit-scrollbar {
+      width: 8px; /* Ширина полосы прокрутки */
+      background: transparent; /* Прозрачный фон для самой полосы */
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный цвет для ползунка */
+      border-radius: 10px; /* Скругленные углы ползунка */
+      border: 1px solid rgba(255, 255, 255, 0.05); /* Тонкая граница для ползунка */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(255, 255, 255, 0.2); /* Чуть темнее при наведении */
+    }
+
+    /* Стиль для полосы прокрутки для Firefox */
+    html {
+      scrollbar-width: thin; /* Тонкая полоса прокрутки */
+      scrollbar-color: rgba(255, 255, 255, 0.1) transparent; /* Цвет ползунка и фона */
+    }
 
 
     *{box-sizing:border-box}
@@ -59,6 +115,10 @@
     ul{padding-left:1.2em; margin:.6em 0 .2em} li{margin:.35em 0; line-height:1.55; overflow-wrap:anywhere; hyphens:auto}
 
     .nav{position:fixed; left:0; right:0; top:0; z-index:90; backdrop-filter:saturate(120%) blur(8px); background:linear-gradient(to bottom, color-mix(in oklab, var(--panel) 92%, transparent), color-mix(in oklab, var(--panel) 76%, transparent)); border-bottom:1px solid var(--line)}
+    /* Сделаем nav непрозрачным для темы "glass" */
+    html[data-palette="glass"] .nav {
+      background: #0d1116; /* Используем твердый цвет для nav бара */
+    }
     .nav-inner{display:flex; align-items:center; gap:12px; justify-content:space-between; padding:12px 0}
     .logo{display:flex; gap:12px; align-items:center}
     .badge{display:inline-flex; align-items:center; gap:6px; font:600 12px/1 Inter; letter-spacing:.6px; text-transform:uppercase; color:var(--muted); background:color-mix(in oklab, var(--panel) 92%, transparent); border:1px solid var(--line); padding:6px 10px; border-radius:999px}
@@ -80,32 +140,54 @@
     .cta:hover{transform:translateY(-1px)}
     .cta .dot{width:9px; height:9px; background:var(--accent); border-radius:50%; box-shadow:0 0 22px color-mix(in oklab, var(--accent) 80%, transparent)}
 
-    html[data-palette="silver-light"] .cta, html[data-palette="silver-dark"] .cta{
-      color: var(--text);
+    /* CTA buttons for Silver palettes (updated from personal site) */
+    html[data-palette="silver-light"] .cta{
+      color: #0b1220 !important; /* Explicitly dark text for silver-light palette */
       background:
         linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.25) 38%, rgba(0,0,0,.08) 72%),
         linear-gradient(110deg, #f6f7f9 0%, #e3e7ed 18%, #fbfcfd 36%, #cfd6df 52%, #f6f7f9 68%, #dde3ea 84%, #fbfcfd 100%);
       border:1px solid color-mix(in oklab, var(--accent) 55%, #ffffff);
       box-shadow: 0 8px 20px rgba(0,0,0,.10), inset 0 1px rgba(255,255,255,.85), inset 0 -1px rgba(0,0,0,.18);
     }
-    html[data-palette="silver-light"] .cta::before, html[data-palette="silver-dark"] .cta::before{content:""; position:absolute; left:-25%; top:-220%; width:40%; height:540%; background:linear-gradient(75deg, transparent 0, rgba(255,255,255,.55) 46%, transparent 64%); transform:rotate(10deg); transition: left .45s ease;}
-    html[data-palette="silver-light"] .cta:hover::before, html[data-palette="silver-dark"] .cta:hover::before{ left:120%; }
+    html[data-palette="silver-light"] .cta span{
+      color: #0b1220 !important; /* Ensure span also gets dark text */
+    }
 
-    html[data-palette="silver-dark"] .cta, html[data-palette="silver-dark"] .cta span{ color:#0b1220 !important; text-shadow:none; }
-    /* Fix for dot visibility on black background for silver-dark */
+    html[data-palette="silver-dark"] .cta {
+      background: #2b2f34 !important; /* Darker gray background for CTA in silver-dark */
+      border-color: #4a5058 !important; /* Darker border for contrast */
+      color: white !important; /* Force white text for CTA in silver-dark */
+      text-shadow: none;
+    }
+    html[data-palette="silver-dark"] .cta span {
+      color: white !important; /* Force white text for CTA in silver-dark */
+      text-shadow: none;
+    }
     html[data-palette="silver-dark"] .cta .dot {
-      background: #ffffff !important; /* Force white dot */
-      box-shadow: 0 0 10px rgba(255,255,255,0.5) !important; /* Subtle glow */
+      background: white !important; /* White dot for visibility */
+      box-shadow: 0 0 10px rgba(255,255,255,0.5) !important; /* Subtle white shadow for the dot */
     }
 
-    html[data-palette="silver-light"] .subtitle{ color:#1f2937; opacity:0.92; }
-    html[data-palette="silver-light"] .p{ color:#334155; }
-    html[data-palette="silver-light"] .label{ color:#475569; }
-    html[data-palette="silver-light"] .hero{ background:
-      radial-gradient(1200px 380px at 10% -10%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 65%),
-      radial-gradient(900px 300px at 110% 110%, color-mix(in oklab, var(--accent-2) 12%, transparent), transparent 60%),
-      var(--bg);
+    /* Ghost buttons (updated from personal site) */
+    .ghost{padding:14px 18px; border-radius:14px; border:1px dashed color-mix(in oklab, var(--line) 100%, transparent); color:color-mix(in oklab, var(--text) 84%, transparent)}
+
+    /* Fix for .ghost button visibility on silver-light palette */
+    html[data-palette="silver-light"] .ghost {
+      color: #334155 !important; /* Darker text for visibility */
+      border: 1px dashed #94a3b8; /* Darker dashed border */
+      background: transparent; /* Ensure transparent background */
     }
+    /* Ensure ghost buttons on dark themes have proper contrast */
+    html[data-palette="silver-dark"] .ghost {
+      color: white !important; /* Force white text for ghost button in silver-dark */
+      border: 1px dashed #4a5058 !important; /* Use a darker border for ghost buttons in silver-dark */
+      background: transparent;
+    }
+    html:not([data-palette="silver-light"]):not([data-palette="silver-dark"]) .ghost {
+      color: var(--text) !important; /* Use general text color for other dark themes */
+      border: 1px dashed color-mix(in oklab, var(--line) 100%, transparent);
+    }
+
 
     .menu-toggle{display:none; background:transparent; border:1px solid var(--line); border-radius:12px; padding:8px 12px; color:var(--muted)}
     .menu-toggle svg{display:block}
@@ -114,6 +196,11 @@
     @media (max-width:960px){
       .badge{display:none}
       .menu{display:none; position:fixed; left:max(4vw,12px); right:max(4vw,12px); top:calc(var(--nav-h) - 8px); padding:14px; border:1px solid var(--line); border-radius:16px; background:linear-gradient(180deg, color-mix(in oklab, var(--panel) 98%, transparent), color-mix(in oklab, var(--panel) 92%, transparent)); box-shadow:var(--shadow); gap:10px; flex-direction:column}
+      /* NEW RULE FOR GLASS PALETTE INSIDE MOBILE MEDIA QUERY */
+      html[data-palette="glass"] .menu {
+        background: transparent; /* Override the linear-gradient for glass palette */
+        box-shadow: none; /* Ensure no shadow for complete transparency */
+      }
       .menu .cta{justify-content:center}
       .menu-toggle{display:inline-flex; align-items:center; gap:8px}
       /* lang-switch is now inside menu, no direct display:none for desktop */
@@ -236,6 +323,67 @@
     .mono{font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
     .muted{color:var(--muted)}
 
+    /* Adjusted color for better readability */
+    .milestone .desc{color:var(--text);}
+    /* Adjusted styles for milestone text in silver-light palette (from personal site) */
+    html[data-palette="silver-light"] .milestone .what { color: #1f2937; }
+    html[data-palette="silver-light"] .milestone .desc { color: #334155; }
+    /* Silver Light Palette Specific Overrides for Text Readability (from personal site) */
+    html[data-palette="silver-light"] .lead,
+    html[data-palette="silver-light"] .subtitle,
+    html[data-palette="silver-light"] .p,
+    html[data-palette="silver-light"] .muted,
+    html[data-palette="silver-light"] .milestone .desc,
+    html[data-palette="silver-light"] .milestone .when {
+        color: #334155; /* Darker gray for general text */
+    }
+
+    html[data-palette="silver-light"] .milestone .what,
+    html[data-palette="silver-light"] .card .card-title,
+    html[data-palette="silver-light"] .h2 {
+        color: #1f2937; /* Even darker for titles and headings */
+    }
+
+    html[data-palette="silver-light"] .label {
+      color: #475569; /* Darker for labels, similar to muted but slightly more prominent */
+    }
+
+    html[data-palette="silver-light"] .kpi .cap {
+        color: #4b5563; /* Ensures KPI captions are readable */
+    }
+    html[data-palette="silver-light"] .input,
+    html[data-palette="silver-light"] .number {
+        color: #0b1220; /* Darker text for input fields */
+    }
+
+    /* Silver Dark Palette Specific Overrides for Text Readability (RU Version) (from personal site) */
+    html[data-palette="silver-dark"] .lead,
+    html[data-palette="silver-dark"] .subtitle,
+    html[data-palette="silver-dark"] .p,
+    html[data-palette="silver-dark"] .muted,
+    html[data-palette="silver-dark"] .milestone .desc,
+    html[data-palette="silver-dark"] .milestone .when {
+        color: #e0e6ec; /* Lighter text for better contrast on dark silver background */
+    }
+
+    html[data-palette="silver-dark"] .milestone .what,
+    html[data-palette="silver-dark"] .card .card-title,
+    html[data-palette="silver-dark"] .h2 {
+        color: #ffffff; /* White text for titles and headings */
+    }
+
+    html[data-palette="silver-dark"] .label {
+      color: #b5beca; /* Lighter for labels */
+    }
+
+    html[data-palette="silver-dark"] .kpi .cap {
+        color: #b5beca; /* Ensures KPI captions are readable */
+    }
+    html[data-palette="silver-dark"] .input,
+    html[data-palette="silver-dark"] .number {
+        color: #eef2f6; /* Lighter text for input fields */
+    }
+
     .story .wrap{display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:start}
     .story .lead{color:var(--muted)}
     .timeline{position:relative; padding:14px 14px 14px 0}
@@ -245,8 +393,6 @@
     .milestone::before{content:""; position:absolute; left:-26px; top:18px; width:12px; height:12px; border-radius:50%; background:var(--bg); border:2px solid var(--accent); box-shadow:0 0 0 4px color-mix(in oklab, var(--accent) 20%, transparent)}
     .milestone .when{font:600 12px/1.1 Inter; color:var(--muted); letter-spacing:.3px}
     .milestone .what{font-weight:650; margin:4px 0}
-    /* Adjusted color for better readability */
-    .milestone .desc{color:var(--text);}
     .chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
     .chip{font:600 11px/1 Inter; letter-spacing:.3px; padding:6px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); background:color-mix(in oklab, var(--panel) 92%, transparent)}
     .bars{display:grid; gap:10px}
@@ -352,7 +498,7 @@
   <nav class="nav" role="navigation">
     <div class="container nav-inner">
       <a href="#top" class="logo" aria-label="На главную">
-        <svg width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="12" fill="#0c1116" stroke="var(--line)"/><path d="M16 30l8-12 8 12" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="12" fill="#0c1116" stroke="var(--line)"/><path d="M16 30l8-12 8 12" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <strong>Комил Султонов</strong>
         <span class="badge">Project Manager</span>
       </a>
@@ -388,7 +534,7 @@
       <div>
         <span class="lead">Ташкент • Узбекистан • Готов к переезду и редким командировкам</span>
         <h1 class="title">IT Project Manager (финтех, AI/ML, digital)</h1>
-        <p class="subtitle">Управляю полным циклом проекта: от идеи и сбора требований до релиза и сопровождения. Платёжные интеграции (YooKassa, Payme), автоконвертация валют для СНГ, продуктовые метрики <span class="mono">DAU/MAU, retention, churn, ARPU, CR</span>. Считаю <span class="mono">LTV/ROAS/CPL/CPM</span> до запуска. Автоматизирую процессы на локальных AI‑моделях (DeepSeek R1, Stable Diffusion, Whisper/Vosk).</p>
+        <p class="subtitle">Управляю полным циклом проекта: от идеи и сбора требований до релиза и сопровождения. Платёжные интеграции (YooKassa, Payme), автоконвертация валют для СНГ, продуктовые метрики <span class="mono">DAU/MAU, retention, churn, ARPU, CR</span>. Считаю <span class="mono">LTV/ROAS/CPL/CPM</span> до запуска. Автоматизирую процессы на локальных AI‑моделях (DeepSeek R1, SD, Whisper/Vosk).</p>
         <div class="hero-cta">
           <a class="cta magnet" href="https://t.me/Ka_yooo_ma" target="_blank" rel="noopener" onmousemove="btnHover(event)" onmouseleave="btnLeave(event)"><span class="dot"></span><span>Написать в Telegram</span></a>
           <a class="ghost" href="#cv">Скачать резюме (PDF)</a>
@@ -641,6 +787,7 @@
   </button>
 
   <script>
+    // Function to toggle the mobile menu
     function toggleMenu(btn){
       const m=document.getElementById('menu');
       const open=m.classList.toggle('open');
@@ -648,6 +795,8 @@
       btn.setAttribute('aria-expanded', open);
       setNavHeightVar(); // Call setNavHeightVar on menu toggle
     }
+
+    // Function to close the mobile menu
     function closeMenu(){
       const m=document.getElementById('menu');
       m.classList.remove('open');
@@ -655,13 +804,15 @@
       setNavHeightVar(); // Call setNavHeightVar on menu close
     }
 
+    // Functions for button hover effect
     function btnHover(e){ const r=e.currentTarget.getBoundingClientRect(); const x=((e.clientX-r.left)/r.width*100).toFixed(2)+'%'; e.currentTarget.style.setProperty('--mx',x); }
     function btnLeave(e){ e.currentTarget.style.removeProperty('--mx'); }
 
+    // Intersection Observer for revealing elements on scroll
     const revObs=new IntersectionObserver((ents)=>{ ents.forEach(ent=>{ if(ent.isIntersecting){ ent.target.classList.add('reveal-visible'); revObs.unobserve(ent.target);} }); }, {threshold:.18});
     document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
 
-    // Star animation changes
+    // Star animation color synchronization and palette/pattern selection logic
     let STAR_COLOR = '#fff';
     function syncStarColor(){ STAR_COLOR = (document.documentElement.getAttribute('data-palette') === 'silver-light') ? '#0b1220' : '#fff'; }
     const paletteSelect=document.getElementById('paletteSelect');
@@ -675,6 +826,7 @@
     paletteSelect.addEventListener('change', e=> setPalette(e.target.value));
     patternSelect.addEventListener('change', e=> setPattern(e.target.value));
 
+    // Reserve space for the switcher element
     function reserveSpaceForSwitcher(){ const sw=document.querySelector('.switcher'); if(!sw) return; const h=sw.offsetHeight+24; document.body.style.paddingBottom=(innerWidth<=640? h+'px' : ''); }
     reserveSpaceForSwitcher(); addEventListener('resize', reserveSpaceForSwitcher);
 
@@ -691,43 +843,60 @@
     addEventListener('beforeunload', ()=>{ try{ sessionStorage.removeItem('themeHintHidden'); }catch(e){} });
     addEventListener('pagehide', ()=>{ try{ sessionStorage.removeItem('themeHintHidden'); }catch(e){} });
 
+    // Star animation logic
     (function(){
       const c=document.getElementById('stars'); if(!c) return; const ctx=c.getContext('2d'); let dpr=Math.min(devicePixelRatio||1,2);
       function resize(){ const w=innerWidth, h=innerHeight; c.width=w*dpr; c.height=h*dpr; c.style.width=w+'px'; c.style.height=h+'px'; ctx.setTransform(dpr,0,0,dpr,0,0); }
       resize(); addEventListener('resize', resize);
       let S=[];
       function starParams(){
-        // Унифицировано под белую тему: одинаковые размер и количество частиц во всех палитрах
+        // Unified for light theme: same size and number of particles across all palettes
         return {N:220, sizeMin:0.4, sizeMax:1.8, vel:.34, alphaMin:.35, alphaMax:.75};
       }
       function rebuild(){ const p=starParams(); S=Array.from({length:p.N},()=>({ x:Math.random()*innerWidth, y:Math.random()*innerHeight, s:Math.random()*(p.sizeMax-p.sizeMin)+p.sizeMin, a:Math.random()*(p.alphaMax-p.alphaMin)+p.alphaMin, vx:(Math.random()-.5)*p.vel, vy:(Math.random()-.5)*p.vel })); }
       rebuild(); addEventListener('resize', rebuild);
-      function tick(){ ctx.clearRect(0,0,innerWidth,innerHeight); ctx.fillStyle=STAR_COLOR; for(const p of S){ p.x+=p.vx; p.y+=p.vy; if(p.x<0)p.x+=innerWidth; if(p.x>innerWidth)p.x-=innerWidth; if(p.y<0)p.y+=innerHeight; if(p.y>innerHeight)p.y-=innerHeight; ctx.globalAlpha=p.a; ctx.beginPath(); ctx.arc(p.x,p.y,p.s,0,6.283); ctx.fill(); } ctx.globalAlpha=1; requestAnimationFrame(tick); }
+      function tick(){ ctx.clearRect(0,0,innerWidth,innerHeight); ctx.fillStyle=STAR_COLOR; for(const p of S){ p.x+=p.vx; p.y+=p.vy; if(p.x<0)p.x+=innerWidth; if(p.x>innerWidth)p.y-=innerHeight; if(p.y<0)p.y+=innerHeight; if(p.y>innerHeight)p.y-=innerHeight; ctx.globalAlpha=p.a; ctx.beginPath(); ctx.arc(p.x,p.y,p.s,0,6.283); ctx.fill(); } ctx.globalAlpha=1; requestAnimationFrame(tick); }
       tick(); window.__rebuildStars = rebuild; // Expose rebuild function globally
     })();
 
 
+    // Story progress bar logic
     const storyEl=document.getElementById('story'); const storyProgress=document.getElementById('storyProgress');
     function updateStoryProgress(){ if(!storyEl) return; const r=storyEl.getBoundingClientRect(); const total=r.height+innerHeight; const passed=Math.min(Math.max(innerHeight-r.top,0), total); const ratio=passed/total; if(storyProgress) storyProgress.style.height=(ratio*100).toFixed(2)+'%'; }
     updateStoryProgress(); addEventListener('scroll', updateStoryProgress, {passive:true}); addEventListener('resize', updateStoryProgress);
     const barObserver=new IntersectionObserver((ents)=>{ ents.forEach(ent=>{ if(ent.isIntersecting){ const i=ent.target; const w=i.dataset.w||0; requestAnimationFrame(()=> i.style.width=w+'%'); barObserver.unobserve(i);} }); }, {threshold:.35});
     document.querySelectorAll('#story .bar i[data-w]').forEach(i=>barObserver.observe(i));
 
+    // Product Metrics (Stickiness and LTV) calculator
     const MET={ dau:el('mDau'), mau:el('mMau'), arpu:el('mArpu'), margin:el('mMargin'), churn:el('mChurn'), cac:el('mCac'), out:{ stick:el('mStick'), ltv:el('mLtv'), ratio:el('mRatio') } };
     function el(id){ return document.getElementById(id) }
     function fmt(n){ return isFinite(n)? Math.round(n).toLocaleString('ru-RU') : '—' }
     function recalcMET(){ const dau=+MET.dau.value||0; const mau=+MET.mau.value||1; const arpu=+MET.arpu.value||0; const margin=(+MET.margin.value||0)/100; const churn=(+MET.churn.value||0)/100; const cac=+MET.cac.value||0; const stick=Math.min(dau/mau*100, 999); const ltv= churn>0 ? (arpu*margin)/churn : 0; const ratio= cac>0 ? ltv/cac : 0; MET.out.stick.textContent=stick.toFixed(1)+'%'; MET.out.ltv.textContent=fmt(ltv); MET.out.ratio.textContent= ratio? ratio.toFixed(2) : '—'; }
     ['mDau','mMau','mArpu','mMargin','mChurn','mCac'].forEach(id=> el(id).addEventListener('input', recalcMET)); recalcMET();
 
+    // ICE prioritization for hypotheses
     const iceForm=document.getElementById('iceForm'); const iceList=document.getElementById('iceList'); const storeKey='iceItems';
     function loadICE(){ try{ return JSON.parse(localStorage.getItem(storeKey)||'[]'); }catch(e){ return [] } }
     function saveICE(items){ localStorage.setItem(storeKey, JSON.stringify(items)); }
     function renderICE(){ const items=loadICE().sort((a,b)=> b.score-a.score); if(!items.length){ iceList.innerHTML='<span class="muted">Пока пусто. Добавьте первую гипотезу выше.</span>'; return;} iceList.innerHTML=items.map((it,i)=>`${i+1}. [${it.score.toFixed(1)}] ${it.name} — I:${it.i} · C:${it.c} · E:${it.e}`).join('<br>'); }
     if(iceForm){ iceForm.addEventListener('submit', (e)=>{ e.preventDefault(); const name=document.getElementById('iceName').value.trim(); const i=+document.getElementById('iceI').value||1; const c=+document.getElementById('iceC').value||1; const eVal=+document.getElementById('iceE').value||1; if(!name) return; const score=(i*c*eVal)/125*100; const items=loadICE(); items.push({name,i,c,e:eVal,score}); saveICE(items); renderICE(); e.target.reset(); document.getElementById('iceI').value=4; document.getElementById('iceC').value=3; document.getElementById('iceE').value=4; }); document.getElementById('iceReset').addEventListener('click', ()=>{ localStorage.removeItem(storeKey); renderICE(); }); renderICE(); }
 
+    // Retention (cohort) forecast
     const rStart=el('rStart'), rRet=el('rRet'), rMonths=el('rMonths'), retTable=el('retTable');
-    function renderRetention(){ const start=+rStart.value||0; const ret=(+rRet.value||0)/100; const months=Math.min(Math.max(+rMonths.value||1,1),24); let alive=start; const rows=[]; for(let m=1;m<=months;m++){ alive = Math.round(alive*ret); const churn = start - alive; rows.push(`${m} мес: активны ${alive.toLocaleString('ru-RU')} • ушли ${churn.toLocaleString('ru-RU')}`); }
-      retTable.innerHTML = rows.join('<br>'); }
+    function renderRetention(){
+      const start=+rStart.value||0;
+      const ret=(+rRet.value||0)/100;
+      const months=Math.min(Math.max(+rMonths.value||1,1),24);
+      let alive=start;
+      const rows = []; // Initialize rows array
+      for(let m=1;m<=months;m++){
+        const prevAlive = alive; // Store previous alive count
+        alive = Math.round(alive*ret);
+        const currentMonthChurn = prevAlive - alive; // Churn for the current month
+        rows.push(`${m} мес: активны ${alive.toLocaleString('ru-RU')} • ушли ${currentMonthChurn.toLocaleString('ru-RU')}`);
+      }
+      retTable.innerHTML = rows.join('<br>');
+    }
     [rStart,rRet,rMonths].forEach(elm=> elm.addEventListener('input', renderRetention)); renderRetention();
 
     // ROI Calculator functions added from personal_site
@@ -754,10 +923,14 @@
     // setNavHeightVar function added from personal_site
     function setNavHeightVar(){ const nav = document.querySelector('.nav'); if(!nav) return; const h = nav.offsetHeight; document.documentElement.style.setProperty('--nav-h', h + 'px'); }
 
+    // Grid layer visibility toggle and select cycle functions
     const gridLayer=document.querySelector('.gridfx'); let gridVisible=true; function cycleSelect(sel){ const i=sel.selectedIndex; sel.selectedIndex=(i+1)%sel.options.length; sel.dispatchEvent(new Event('change',{bubbles:true})); }
     document.addEventListener('keydown',(e)=>{ if(e.target.matches('input,textarea')) return; const k=e.key.toLowerCase(); if(k==='p'){ cycleSelect(paletteSelect);} else if(k==='f'){ cycleSelect(patternSelect);} else if(k==='g'){ gridVisible=!gridVisible; if(gridLayer) gridLayer.style.display=gridVisible?'block':'none'; } });
+
+    // Resume link fallback logic
     (async function ensureResume(){ const a=document.getElementById('resumeLink'); if(!a) return; const primary='./assets/Султонов К.Г. Руководитель проектов.pdf'; const fallback='./assets/resume.pdf'; try{ const r=await fetch(encodeURI(primary),{method:'HEAD'}); if(r&&r.ok){ a.href=encodeURI(primary); return } const r2=await fetch(fallback,{method:'HEAD'}); if(r2&&r2.ok){ a.href=fallback } }catch(err){ a.href=fallback } })();
 
+    // DOMContentLoaded and resize event listeners
     document.addEventListener('DOMContentLoaded', ()=>{
       setNavHeightVar();
       initThemeHint(); // Initialise theme hint
