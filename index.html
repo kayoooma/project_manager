@@ -121,6 +121,34 @@
     html[data-pattern="glass"] .glass-orbs, html[data-pattern="glass"] .gridfx, html[data-pattern="glass"] .grain{display:block}
     html[data-pattern="stripes"] .graphite-stripes, html[data-pattern="stripes"] .grain{display:block}
     html[data-pattern="plain"] .grain{display:block}
+    /* Added class for video background */
+    .video-background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        overflow: hidden; /* Ensure video doesn't overflow its container */
+        background-size: cover; /* Fallback for browsers that don't support video */
+    }
+    .video-background video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        transform: translate(-50%, -50%); /* Center the video */
+        object-fit: cover; /* Cover the container */
+        /* Optional: Add a subtle blur or opacity for cinematic effect */
+        filter: brightness(0.7) contrast(1.1); /* Slightly darken and increase contrast */
+    }
+
 
     .mesh{z-index:-5; filter:blur(50px) saturate(120%); opacity:.35; background:
       radial-gradient(60% 70% at 10% 20%, color-mix(in oklab, var(--accent) 80%, transparent), transparent 60%),
@@ -136,16 +164,30 @@
     .neon-laser{z-index:-4; background:linear-gradient(120deg, transparent 45%, color-mix(in oklab, var(--accent-2) 18%, transparent) 50%, transparent 55%), linear-gradient(-120deg, transparent 45%, color-mix(in oklab, var(--accent) 18%, transparent) 50%, transparent 55%); animation: laserSweep 9s linear infinite}
     @keyframes laserSweep{0%{background-position:-200% 0, 200% 0}100%{background-position:200% 0, -200% 0}}
 
-    .glass-orbs{z-index:-5; filter:blur(60px) saturate(120%); opacity:.42}
+    .glass-orbs{z-index:-5; filter:blur(60px) saturate(120%); opacity:.42; animation:orbMove 30s ease-in-out infinite alternate;}
     .glass-orbs::before, .glass-orbs::after{content:""; position:absolute; width:720px; height:720px; border-radius:50%; filter:blur(40px);} 
-    .glass-orbs::before{left:-120px; top:-160px; background:radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 90%, transparent), transparent 60%)}
-    .glass-orbs::after{right:-160px; bottom:-160px; background:radial-gradient(circle at 70% 70%, color-mix(in oklab, var(--accent-2) 90%, transparent), transparent 60%)}
+    .glass-orbs::before{left:-120px; top:-160px; background:radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent) 90%, transparent), transparent 60%); animation:orb1Anim 28s ease-in-out infinite alternate;}
+    .glass-orbs::after{right:-160px; bottom:-160px; background:radial-gradient(circle at 70% 70%, color-mix(in oklab, var(--accent-2) 90%, transparent), transparent 60%); animation:orb2Anim 24s ease-in-out infinite alternate;}
+
+    @keyframes orbMove {
+      0% { transform: scale(1) translateX(0) translateY(0); }
+      50% { transform: scale(1.05) translateX(10px) translateY(10px); }
+      100% { transform: scale(1) translateX(0) translateY(0); }
+    }
+    @keyframes orb1Anim {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(20px, 30px); }
+    }
+    @keyframes orb2Anim {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-30px, -20px); }
+    }
 
     .graphite-stripes{z-index:-5; opacity:.18; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 10px)}
 
     .gridfx{z-index:-2; opacity:.06; mix-blend-mode:overlay; background-image:linear-gradient(transparent 95%, rgba(255,255,255,.25) 95%), linear-gradient(90deg, transparent 95%, rgba(255,255,255,.25) 95%); background-size:24px 24px,24px 24px; animation:gridShift 60s linear infinite}
     @keyframes gridShift{0%{background-position:0 0,0 0}100%{background-position:480px 0,0 480px}}
-    .grain{z-index:-1; opacity:.06; mix-blend-mode:soft-light; background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsSAAALEgHS3X78AAABcElEQVR4nO2bvU7DQBCEZ6sQ4h2gE0w6kJ3gC5wBq0C4h+0K0FQyQvXgqQn9dD3Wg6gA2o8p9l3Zb3iV1lQe2k9nY8mQy6KQe3k+z9wE5rJwq7mXQqVwHXL4l0k6l9GQm3v0q0d7Q8q2N3wZ9s1c0Q3Y2m4G6wQJt0iHq3R8b5H5l8w7wqN3б5s8Qw2Vv3gqQ8aJr4Xk1xK7w0q2kQ3h1bZc9uУj6Ucn3vQmZ7sU8Qd1cZ3t1i8h6kKk3jQW5Qb5sC5d9wqF2cF7YQF3X1s2mQdZb0rCqR4vR2Zx9gXyqk+vRr8Q1e2k9b6J9n3j0q3n0v4c6Qyqf9b1oZ2r9b9m7E1m2vC0gS0f8eWb7g2u8t0J3n9bCj9m8Qp0cZ8a0Hf0m9w0x3Kq7wTg5+o9C8u7zq7I1qQvQxw7V1U1eQxXrQAAAABJRU5ErkJggg==')}
+    .grain{z-index:-1; opacity:.06; mix-blend-mode:soft-light; background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsSAAALEgHS3X78AAABcElEQVR4nO2bvU7DQBCEZ6sQ4h2gE0w6kJ3gC5wBq0C4h+0K0FQyQvXgqQn9dD3Wg6gA2o8p9l3Zb3iV1lQe2k9nY8mQy6KQe3k+z9wE5rJwq7mXQqVwHXL4l0k6l9GQm3v0q0d7Q8q2N3wZ9s1c0Q3Y2m4G6wQJt0iHq3R8b5H5l8w7wqN3b5s8Qw2Vv3gqQ8aJr4Xk1xK7w0q2kQ3h1bZc9uУj6Ucn3vQmZ7sU8Qd1cZ3t1i8h6kKk3jQW5Qb5sC5d9wqF2cF7YQF3X1s2mQdZb0rCqR4vR2Zx9gXyqk+vRr8Q1e2k9b6J9n3j0q3n0v4c6Qyqf9b1oZ2r9b9m7E1m2vC0gS0f8eWb7g2u8t0J3n9bCj9m8Qp0cZ8a0Hf0m9w0x3Kq7wTg5+o9C8u7zq7I1qQvQxw7V1U1eQxXrQAAAABJRU5ErkJggg==')}
 
     html[data-palette="silver-light"] .gridfx{opacity:.08; mix-blend-mode:multiply; background-image:linear-gradient(#00000010 1px, transparent 1px), linear-gradient(90deg,#00000010 1px, transparent 1px)}
     html[data-palette="silver-light"] .grain{opacity:.04; mix-blend-mode:multiply}
@@ -247,9 +289,51 @@
     .scroll-top{ position:fixed; right:16px; bottom:16px; border:none; border-radius:12px; padding:10px; background:var(--panel); border:1px solid var(--line); color:var(--text); box-shadow: var(--shadow); cursor:pointer; opacity:0; visibility:hidden; transform:translateY(8px); transition: opacity .18s ease, transform .18s ease, visibility .18s; z-index:95; }
     .scroll-top.show{ opacity:1; visibility:visible; transform:translateY(0); }
     .scroll-top:hover{ filter:brightness(1.1) }
+
+    /* Стили для изображений сертификатов */
+    .certificate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Настройте minmax по необходимости */
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .certificate-card {
+      background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 98%, transparent), color-mix(in oklab, var(--panel) 100%, transparent));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 10px; /* Немного меньше отступа для изображений */
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .certificate-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px; /* Немного скруглённые углы для изображений */
+      margin-bottom: 10px;
+    }
+    .certificate-card a {
+      font-weight: 600;
+      color: var(--accent); /* Акцентный цвет для ссылок */
+      text-decoration: none;
+      margin-top: 5px;
+    }
+    .certificate-card a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
+  <!-- Концептуальный видеофон (раскомментируйте и замените src на ваш URL видео) -->
+  <!-- <div class="video-background">
+    <video autoplay loop muted playsinline>
+      <source src="your-subtle-background-video.mp4" type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
+  </div> -->
+
   <div class="layer mesh" aria-hidden="true"></div>
   <canvas id="stars" class="layer" aria-hidden="true"></canvas>
   <div class="layer neon-grid" aria-hidden="true"></div>
@@ -266,7 +350,7 @@
         <strong>Комил Султонов</strong>
         <span class="badge">Project Manager</span>
       </a>
-      <!-- Added mobile language switch from personal_site -->
+      <!-- Добавлен мобильный переключатель языка из personal_site -->
       <div class="lang-mobile" aria-label="Переключение языка (моб.)">
         <a href="./" hreflang="ru" lang="ru" class="active" aria-label="Русская версия">RU</a>
         <a href="./en/" hreflang="en" lang="en" aria-label="English version">EN</a>
@@ -372,6 +456,34 @@
       <div class="grid cols-2" style="margin-top:8px">
         <div class="card reveal"><div class="card-title">Образование</div><ul class="muted"><li>Нац. университет им. Мирзо Улугбека — Экономика/HR (ожидается 2026)</li><li>Школа №178</li></ul></div>
         <div class="card reveal"><div class="card-title">Курсы и сертификаты</div><ul class="muted"><li>PMI: Fundamentals of Predictive Project Management (2024)</li><li>ChatGPT для бизнеса и рекламы (2024)</li><li>Нейросети для маркетолога (2024)</li><li>Автоматизация 2.0 — AI‑сотрудники (2024)</li><li>Udemy: Google Ads (2024)</li><li>Skillshare: Advanced/Product 3D Animation (2023)</li><li>IELTS 6.5</li></ul></div>
+      </div>
+      <!-- Раздел сертификатов -->
+      <h3 class="h2" style="margin-top: 40px;">Сертификаты</h3>
+      <div class="certificate-grid">
+        <div class="certificate-card reveal">
+          <img src="./assets/photo_2025-08-12_03-31-45.jpg" alt="Сертификат Skillshare: Product Animation in Blender" loading="lazy">
+          <p class="small muted">Skillshare: Product Animation in Blender</p>
+        </div>
+        <div class="certificate-card reveal">
+          <img src="./assets/photo_2025-08-12_03-32-19.jpg" alt="Сертификат Skillshare: Advanced 3D Animation" loading="lazy">
+          <p class="small muted">Skillshare: Advanced 3D Animation</p>
+        </div>
+        <div class="certificate-card reveal">
+          <img src="./assets/sertificate Udemy Google Ads 78987096t7597ser.png" alt="Сертификат Udemy: Google Ads" loading="lazy">
+          <p class="small muted">Udemy: Google Ads</p>
+        </div>
+        <div class="certificate-card reveal">
+          <a href="./assets/FundamentalsofPredictiveProjectManagement_Badge20240512_8_ogbfc1.pdf" target="_blank" rel="noopener">
+            <img src="./assets/pmi badge.png" alt="Бейдж сертификата PMI" loading="lazy">
+            <p class="small muted">PMI: Fundamentals of Predictive Project Management (PDF)</p>
+          </a>
+        </div>
+        <div class="certificate-card reveal">
+          <a href="./assets/UZ00425501251-27-04-2025-ETRF.pdf" target="_blank" rel="noopener">
+            <img src="./assets/Снимок экрана IELTS.png" alt="Бланк результатов теста IELTS" loading="lazy">
+            <p class="small muted">Бланк результатов теста IELTS (PDF)</p>
+          </a>
+        </div>
       </div>
     </div>
   </section>
