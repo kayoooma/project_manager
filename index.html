@@ -92,6 +92,12 @@
     html[data-palette="silver-light"] .cta:hover::before, html[data-palette="silver-dark"] .cta:hover::before{ left:120%; }
 
     html[data-palette="silver-dark"] .cta, html[data-palette="silver-dark"] .cta span{ color:#0b1220 !important; text-shadow:none; }
+    /* Fix for dot visibility on black background for silver-dark */
+    html[data-palette="silver-dark"] .cta .dot {
+      background: #ffffff !important; /* Force white dot */
+      box-shadow: 0 0 10px rgba(255,255,255,0.5) !important; /* Subtle glow */
+    }
+
     html[data-palette="silver-light"] .subtitle{ color:#1f2937; opacity:0.92; }
     html[data-palette="silver-light"] .p{ color:#334155; }
     html[data-palette="silver-light"] .label{ color:#475569; }
